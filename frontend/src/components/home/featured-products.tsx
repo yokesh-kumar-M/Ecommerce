@@ -6,14 +6,23 @@ import type { PaginatedResponse, Product } from '@/types';
 
 async function getFeaturedProducts(): Promise<Product[]> {
   try {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), 5000);
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/products/?ordering=-last_update&page_size=8`,
-      { next: { revalidate: 300 } },
+      { 
+        next: { revalidate: 300 },
+        signal: controller.signal,
+      },
     );
+    clearTimeout(id);
+    
     if (!res.ok) return [];
     const data: PaginatedResponse<Product> = await res.json();
     return data.results;
-  } catch {
+  } catch (error) {
+    console.error('Error fetching featured products:', error);
     return [];
   }
 }

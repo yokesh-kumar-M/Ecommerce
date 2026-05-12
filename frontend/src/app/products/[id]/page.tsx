@@ -9,12 +9,24 @@ interface ProductPageProps {
 }
 
 async function getProduct(id: string) {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}/`,
-    { next: { revalidate: 60 } },
-  );
-  if (!res.ok) return null;
-  return res.json();
+  try {
+    const controller = new AbortController();
+    const timerId = setTimeout(() => controller.abort(), 5000);
+
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}/`,
+      { 
+        next: { revalidate: 60 },
+        signal: controller.signal
+      },
+    );
+    clearTimeout(timerId);
+    if (!res.ok) return null;
+    return res.json();
+  } catch (error) {
+    console.error(`Error fetching product ${id}:`, error);
+    return null;
+  }
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {

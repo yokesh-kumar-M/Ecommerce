@@ -3,14 +3,22 @@ import type { Collection } from '@/types';
 
 async function getCollections(): Promise<Collection[]> {
   try {
+    const controller = new AbortController();
+    const id = setTimeout(() => controller.abort(), 5000);
+
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/collections/`,
-      { next: { revalidate: 600 } },
+      { 
+        next: { revalidate: 600 },
+        signal: controller.signal
+      },
     );
+    clearTimeout(id);
     if (!res.ok) return [];
     const data = await res.json();
     return Array.isArray(data) ? data : data.results ?? [];
-  } catch {
+  } catch (error) {
+    console.error('Error fetching collections:', error);
     return [];
   }
 }
