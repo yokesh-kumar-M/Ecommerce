@@ -17,8 +17,6 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN python manage.py collectstatic --noinput --settings=ecommerce.settings.production
-
 EXPOSE 8000
 
-CMD ["gunicorn", "ecommerce.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--timeout", "120"]
+CMD ["sh", "-c", "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn ecommerce.wsgi:application --bind 0.0.0.0:8000 --workers 4 --timeout 120"]
