@@ -5,7 +5,7 @@ django-cors-headers==4.4.0
 drf-spectacular==0.27.2
 django-filter==24.3
 Pillow==10.4.0
-psycopg[binary]
+psycopg2-binary
 python-decouple==3.8
 whitenoise==6.7.0
 gunicorn==22.0.0
