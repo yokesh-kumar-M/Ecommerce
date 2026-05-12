@@ -33,7 +33,9 @@ export default function ProductsPage({ searchParams }: ProductsPageProps) {
 
       <div className="flex flex-col gap-8 lg:flex-row">
         <aside className="w-full lg:w-64">
-          <ProductFilters />
+          <Suspense fallback={<div className="h-64 rounded-xl border bg-card animate-pulse" />}>
+            <ProductFilters />
+          </Suspense>
         </aside>
         <div className="flex-1">
           <Suspense fallback={<ProductSkeleton count={12} />}>
