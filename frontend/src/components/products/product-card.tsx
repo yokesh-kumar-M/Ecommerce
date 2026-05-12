@@ -25,8 +25,11 @@ export function ProductCard({ product }: ProductCardProps) {
       if (!currentCartId) {
         const { data } = await cartApi.create();
         currentCartId = data.id;
-        setCartId(currentCartId);
+        if (currentCartId) {
+          setCartId(currentCartId);
+        }
       }
+      if (!currentCartId) throw new Error('Could not create cart');
       await cartApi.addItem(currentCartId, { product_id: product.id, quantity: 1 });
       return currentCartId;
     },
