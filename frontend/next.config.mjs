@@ -24,7 +24,7 @@ const nextConfig = {
     return [
       {
         source: '/api/:path*',
-        destination: `${process.env.NEXT_PUBLIC_API_URL || 'https://shopnest-backend.onrender.com'}/api/:path*`,
+        destination: `${process.env.NEXT_PUBLIC_API_URL || 'https://shopnest-backend-001.onrender.com'}/api/:path*`,
       },
     ];
   },
