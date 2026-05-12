@@ -13,8 +13,29 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 COPY . .
-RUN pip install -r requirements/production.txt
+
+RUN pip install --no-cache-dir \
+    "Django==5.1.0" \
+    "djangorestframework==3.15.2" \
+    "djangorestframework-simplejwt[crypto]==5.3.1" \
+    "django-cors-headers==4.4.0" \
+    "psycopg2-binary" \
+    "python-decouple==3.8" \
+    "whitenoise==6.7.0" \
+    "gunicorn==22.0.0" \
+    "dj-database-url==2.2.0" \
+    "Pillow==10.4.0" \
+    "django-filter==24.3" \
+    "drf-spectacular==0.27.2" \
+    "django-storages==1.14.3" \
+    "boto3==1.35.0" \
+    "celery==5.4.0" \
+    "redis==5.0.8" \
+    "django-redis==5.4.0" \
+    "stripe==10.7.0" \
+    "drf-nested-routers==0.94.1" \
+    "sentry-sdk[django]==2.12.0"
 
 EXPOSE 8000
 
-CMD ["sh", "-c", "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn ecommerce.wsgi:application --bind 0.0.0.0:8000 --workers 4 --timeout 120"]
+CMD ["sh", "-c", "python manage.py collectstatic --noinput && python manage.py migrate && gunicorn ecommerce.wsgi:application --bind 0.0.0.0:8000 --workers 2 --timeout 120"]
