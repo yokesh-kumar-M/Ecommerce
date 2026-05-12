@@ -46,6 +46,7 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+          cache-dependency-path: backend/requirements/*.txt
 
       - name: Install dependencies
         run: pip install -r requirements/development.txt
@@ -72,5 +73,6 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+          cache-dependency-path: backend/requirements/*.txt
       - run: pip install ruff
       - run: ruff check apps/ ecommerce/
