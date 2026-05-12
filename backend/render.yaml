@@ -1,0 +1,42 @@
+services:
+  - type: web
+    name: shopnest-backend
+    runtime: python
+    buildCommand: pip install -r requirements/production.txt && python manage.py collectstatic --noinput && python manage.py migrate
+    startCommand: gunicorn ecommerce.wsgi:application --bind 0.0.0.0:$PORT --workers 4 --timeout 120
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: ecommerce.settings.production
+      - key: SECRET_KEY
+        generateValue: true
+      - key: ALLOWED_HOSTS
+        value: shopnest-backend.onrender.com
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://shopnest.vercel.app
+      - key: DATABASE_URL
+        fromDatabase:
+          name: shopnest-db
+          property: connectionString
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: shopnest-redis
+          property: connectionString
+      - key: USE_S3
+        value: false
+      - key: DEBUG
+        value: false
+    autoDeploy: true
+    healthCheckPath: /api/docs/
+
+  - type: redis
+    name: shopnest-redis
+    ipAllowList: []
+    plan: free
+    maxmemoryPolicy: noeviction
+
+databases:
+  - name: shopnest-db
+    plan: free
+    databaseName: ecommerce
+    user: ecommerce
