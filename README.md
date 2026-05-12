@@ -2,6 +2,12 @@
 
 A production-grade, full-stack e-commerce application built with **Django REST Framework** (backend) and **Next.js 14** (frontend).
 
+## 🚀 Live Demo
+
+- **Frontend (Production):** [https://ecommerce-frontend-prod-yokeshkumar.vercel.app](https://ecommerce-frontend-prod-yokeshkumar.vercel.app)
+- **Backend API:** [https://ecommerce-backend-prod-cwkx.onrender.com/api/](https://ecommerce-backend-prod-cwkx.onrender.com/api/)
+- **API Documentation:** [https://ecommerce-backend-prod-cwkx.onrender.com/api/docs/](https://ecommerce-backend-prod-cwkx.onrender.com/api/docs/)
+
 ## Architecture
 
 ```
@@ -31,9 +37,9 @@ shopnest/
 ### Backend
 | Layer | Technology |
 |-------|-----------|
-| Framework | Django 5.2 + DRF 3.15 |
+| Framework | Django 5.1 + DRF 3.15 |
 | Auth | JWT (djangorestframework-simplejwt) |
-| Database | PostgreSQL (SQLite in dev) |
+| Database | PostgreSQL (Supabase) |
 | Cache | Redis + django-redis |
 | Task Queue | Celery + Redis |
 | API Docs | drf-spectacular (Swagger + Redoc) |
