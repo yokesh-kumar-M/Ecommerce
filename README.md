@@ -4,9 +4,11 @@ A production-grade, full-stack e-commerce application built with **Django REST F
 
 ## 🚀 Live Demo
 
-- **Frontend (Production):** [https://ecommerce-frontend-prod-yokeshkumar.vercel.app](https://ecommerce-frontend-prod-yokeshkumar.vercel.app)
+- **Frontend (Production):** [https://frontend-yokeshkumar.vercel.app](https://frontend-yokeshkumar.vercel.app)
 - **Backend API:** [https://ecommerce-backend-prod-cwkx.onrender.com/api/](https://ecommerce-backend-prod-cwkx.onrender.com/api/)
 - **API Documentation:** [https://ecommerce-backend-prod-cwkx.onrender.com/api/docs/](https://ecommerce-backend-prod-cwkx.onrender.com/api/docs/)
+- **Health Check:** [https://ecommerce-backend-prod-cwkx.onrender.com/api/health/](https://ecommerce-backend-prod-cwkx.onrender.com/api/health/)
+
 ## Architecture
 
 ```

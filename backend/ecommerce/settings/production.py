@@ -41,6 +41,3 @@ if SENTRY_DSN:
 
 LOGGING['root']['level'] = 'INFO'
 
-if not config('REDIS_URL', default=''):
-    CACHES = {'default': {'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'}}
-
