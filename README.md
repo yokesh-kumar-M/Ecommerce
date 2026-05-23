@@ -1,6 +1,13 @@
 # ShopNest — Enterprise E-Commerce Platform
 
-A production-grade, full-stack e-commerce application built with **Django REST Framework** (backend) and **Next.js 14** (frontend).
+[![Django](https://img.shields.io/badge/Django-5.1-092E20?logo=django)](https://www.djangoproject.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-14-000?logo=nextdotjs)](https://nextjs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript)](https://www.typescriptlang.org/)
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-336791?logo=postgresql)](https://www.postgresql.org/)
+[![Redis](https://img.shields.io/badge/Redis-cache-DC382D?logo=redis)](https://redis.io/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+A production-grade, full-stack e-commerce application built with **Django REST Framework** (backend) and **Next.js 14** (frontend). Deployed live on Render + Vercel.
 
 ## 🚀 Live Demo
 
@@ -167,3 +174,16 @@ See `backend/.env.example` and `frontend/.env.local.example` for all required va
 - Dark/light theme
 - Fully responsive UI
 - TypeScript throughout
+
+---
+
+## Related projects
+
+- [Flick](https://github.com/yokesh-kumar-M/Flick) — sibling Django microservices stack (7 services).
+- [Online-Compiler](https://github.com/yokesh-kumar-M/Online_compiler) — Django + FastAPI sandboxed code runner.
+- [PromptEnhancer](https://github.com/yokesh-kumar-M/PromptEnhancer) — Django + React + browser/VS Code extensions.
+- [Portfolio](https://github.com/yokesh-kumar-M/Portfolio) — the live site that links here.
+
+## License
+
+[MIT](LICENSE) — © 2024-2026 Yokesh Kumar M.
